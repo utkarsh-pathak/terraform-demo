@@ -30,7 +30,8 @@ resource "aws_ecs_service" "myapp-service" {
   lifecycle {
     # ignore_changes = [task_definition]
     ignore_changes = [
-      capacity_provider_strategy
+      task_definition,
+      name
     ]
   }
 }
