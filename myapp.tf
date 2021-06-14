@@ -15,7 +15,7 @@ resource "aws_ecs_task_definition" "myapp-task-definition" {
 
 resource "aws_ecs_service" "myapp-service" {
   count           = var.MYAPP_SERVICE_ENABLE
-  name            = "myapp"
+  name            = var.APP_NAME
   cluster         = aws_ecs_cluster.example-cluster.id
   task_definition = aws_ecs_task_definition.myapp-task-definition.arn
   desired_count   = 1

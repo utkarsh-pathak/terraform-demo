@@ -6,3 +6,8 @@ variable "MYAPP_VERSION" {
   default = "0"
 }
 
+variable "APP_NAME" {
+  default = "myapp"
+  
+}
+
