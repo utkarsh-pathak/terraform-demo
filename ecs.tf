@@ -11,9 +11,9 @@ resource "aws_launch_configuration" "ecs-example-launchconfig" {
   iam_instance_profile = aws_iam_instance_profile.ecs-ec2-role.id
   security_groups      = [aws_security_group.ecs-securitygroup.id]
   user_data            = "#!/bin/bash\necho 'ECS_CLUSTER=example-cluster' > /etc/ecs/ecs.config\nstart ecs"
-  lifecycle {
-    create_before_destroy = true
-  }
+  # lifecycle {
+  #   create_before_destroy = true
+  # }
 }
 
 resource "aws_autoscaling_group" "ecs-example-autoscaling" {
