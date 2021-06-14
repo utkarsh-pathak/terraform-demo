@@ -30,7 +30,8 @@ variable "AMIS" {
   default = {
     us-east-1 = "ami-13be557e"
     us-west-2 = "ami-06b94666"
-    eu-west-1 = "ami-844e0bf7"
+    # eu-west-1 = "ami-844e0bf7"
+    eu-west-1 = "ami-0943382e114f188e8"
   }
 }
 
@@ -39,7 +40,7 @@ variable "INSTANCE_DEVICE_NAME" {
 }
 
 variable "JENKINS_VERSION" {
-  default = "2.289.1"
+  default = "2.73.2"
 }
 
 variable "AWS_ACCESS_KEY" {}

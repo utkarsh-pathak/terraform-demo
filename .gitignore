@@ -5,6 +5,5 @@
 */mykey*
 *.tfvars
 *terraform/*
-terraform.tfstate
 *.pub
 mykey
