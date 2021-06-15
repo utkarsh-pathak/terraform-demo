@@ -20,17 +20,18 @@ resource "aws_ecs_service" "myapp-service" {
   task_definition = aws_ecs_task_definition.myapp-task-definition.arn
   desired_count   = 1
   iam_role        = aws_iam_role.ecs-service-role.arn
+  force_new_deployment = true
   depends_on      = [aws_iam_policy_attachment.ecs-service-attach1]
 
    ordered_placement_strategy {
     type  = "binpack"
     field = "cpu"
   }
-  capacity_provider_strategy {
-    base = 1
-    weight = 100
-    capacity_provider = "example-capacity-provider"
-  }
+  # capacity_provider_strategy {
+  #   base = 1
+  #   weight = 100
+  #   capacity_provider = "example-capacity-provider"
+  # }
 
   load_balancer {
     elb_name       = aws_elb.myapp-elb.name
