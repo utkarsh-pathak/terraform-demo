@@ -29,7 +29,7 @@ resource "aws_ecs_service" "myapp-service" {
   capacity_provider_strategy {
     base = 1
     weight = 100
-    capacity_provider = "ECS_Managed"
+    capacity_provider = "example-capacity-provider"
   }
 
   load_balancer {
