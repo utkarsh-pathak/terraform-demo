@@ -26,6 +26,11 @@ resource "aws_ecs_service" "myapp-service" {
     type  = "binpack"
     field = "cpu"
   }
+  capacity_provider_strategy {
+    base = 1
+    weight = 100
+    capacity_provide = "ECS_Managed"
+  }
 
   load_balancer {
     elb_name       = aws_elb.myapp-elb.name
