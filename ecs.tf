@@ -29,12 +29,4 @@ resource "aws_autoscaling_group" "ecs-example-autoscaling" {
   }
 }
 
-resource "aws_ecs_capacity_provider" "example-capacity-provider" {
-  name = "example-capacity-provider"
-
-  auto_scaling_group_provider {
-    auto_scaling_group_arn         = aws_autoscaling_group.ecs-example-autoscaling.arn
-    managed_termination_protection = "ENABLED"
-  }
-}
 
