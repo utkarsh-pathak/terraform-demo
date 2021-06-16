@@ -15,7 +15,7 @@ resource "aws_ecs_task_definition" "myapp-task-definition" {
 
 resource "aws_ecs_service" "myapp-service" {
   count           = var.MYAPP_SERVICE_ENABLE
-  name            = "myapp"
+  name            = "myapp_${replace(timestamp(), ":", "-")}"
   cluster         = aws_ecs_cluster.example-cluster.id
   task_definition = aws_ecs_task_definition.myapp-task-definition.arn
   desired_count   = 1
@@ -41,8 +41,7 @@ resource "aws_ecs_service" "myapp-service" {
   lifecycle {
     # ignore_changes = [task_definition]
     ignore_changes = [
-      task_definition,
-      capacity_provider_strategy
+      task_definition
     ]
   }
 }
@@ -67,9 +66,9 @@ resource "aws_elb" "myapp-elb" {
   }
 
   cross_zone_load_balancing   = true
-  idle_timeout                = 400
+  idle_timeout                = 60
   connection_draining         = true
-  connection_draining_timeout = 400
+  connection_draining_timeout = 60
 
   subnets         = [aws_subnet.main-public-1.id, aws_subnet.main-public-2.id]
   security_groups = [aws_security_group.myapp-elb-securitygroup.id]

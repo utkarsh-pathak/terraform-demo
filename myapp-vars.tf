@@ -3,7 +3,7 @@ variable "MYAPP_SERVICE_ENABLE" {
 }
 
 variable "MYAPP_VERSION" {
-  default = "0"
+  default = "latest"
 }
 
 variable "APP_NAME" {
